@@ -20,3 +20,15 @@
 .App-link {
   color: #09d3ac;
 }
+
+.app {
+  padding: 30px;
+  background-color: floralwhite;
+}
+
+.foo {
+  align-items: center;
+  display: flex;
+  font-size: 18px;
+  justify-content: space-between;
+}
