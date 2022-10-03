@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { SevenWonders } from './SevenWonders';
 
-// import Counter from './Counter';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<SevenWonders />, document.getElementById('root'));
