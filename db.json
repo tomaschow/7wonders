@@ -1,0 +1,37 @@
+{
+  "gameHistory": [
+    {
+      "id": "836897",
+      "date": "2022-10-04T19:29:40.894Z",
+      "players": [
+        {
+          "name": "Tomi",
+          "warGain": "3",
+          "warLoss": "2",
+          "yellow": "15",
+          "board": "6",
+          "money": "25",
+          "green": "69",
+          "blue": "",
+          "purple": "36",
+          "brown": "",
+          "total": 6
+        },
+        {
+          "name": "Gali",
+          "warGain": "16",
+          "warLoss": "2",
+          "yellow": "3",
+          "board": "64",
+          "money": "6",
+          "green": "",
+          "blue": "6",
+          "purple": "",
+          "brown": "6",
+          "total": 64
+        }
+      ],
+      "bestPlayer": "Gali"
+    }
+  ]
+}

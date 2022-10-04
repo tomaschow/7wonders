@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { Button, Card, Form, Container, Row, Col } from 'react-bootstrap';
+import { postHistory } from './api/playersApi'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const Player = ({ player, index, removePlayer }) => (
@@ -155,16 +156,15 @@ export const SevenWonders = () => {
     }
   }, [players]);
 
-  const printGameSummary = useCallback(() => {
-    // date
-    console.log('Date:', new Date().toISOString().slice(0, 10));
-    // guid
-    console.log('Game ID:', Math.random() * 28);
-    // iterate players list
-    players.forEach(p => {
-      console.log(p)
-    });
-    console.log('Best player:', bestPlayer)
+  const printGameSummary = useCallback(async () => {
+    // create a game history based on summary
+    const history = {
+      id: String(Math.random() * 28).slice(3, 9),
+      date: new Date().toISOString(),
+      players,
+      bestPlayer
+    }
+    await postHistory(history);
   }, [players, bestPlayer]);
 
   const addPlayer = ({
@@ -209,29 +209,20 @@ export const SevenWonders = () => {
           <h1 className="text-center mb-4">七大奇迹计分板</h1>
           <FormPlayer addPlayer={addPlayer} />
           <Row className="align-items-center">
-            <Col xs="auto">
-              <Button
-                variant="secondary mb-2"
-                onClick={() => {
-                  restart();
-                }}
-              >
-                Restart Game
-              </Button>
-            </Col>
             {players.length > 0 && (
               <Col xs="auto">
                 <Button
                   variant="secondary mb-2"
-                  onClick={() => {
-                    printGameSummary();
+                  onClick={async () => {
+                    await printGameSummary();
+                    restart();
                   }}
                 >
                   End Game
                 </Button>
               </Col>
             )}
-            {bestPlayer && (
+            {players.length > 0 && bestPlayer && (
               <Col xs="auto">
                 <b>🎉 The best player is: {bestPlayer} 🎉</b>
               </Col>
