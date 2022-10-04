@@ -29,15 +29,7 @@ export const PlayerForm = ({ addPlayer }) => {
     const fields = Object.keys(fieldToSetStateMap);
 
     const resetInputs = () => {
-        setName('');
-        setBoard('');
-        setWarGain('');
-        setYellow('');
-        setBlue('');
-        setMoney('');
-        setBrown('');
-        setPurple('');
-        setGreen('');
+        fields.forEach(f => f.callback(''));
     };
 
     const handleSubmit = (e) => {
@@ -45,7 +37,7 @@ export const PlayerForm = ({ addPlayer }) => {
         if (!name) {
             return;
         }
-        addPlayer({
+        const newPlayer = {
             name,
             warGain,
             warLoss,
@@ -66,7 +58,9 @@ export const PlayerForm = ({ addPlayer }) => {
                 0 + Number(blue) ||
                 0 + Number(brown) ||
                 0 - Number(warLoss) || 0,
-        });
+        };
+
+        addPlayer(newPlayer);
         resetInputs();
     };
 
