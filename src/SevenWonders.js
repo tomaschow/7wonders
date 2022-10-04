@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useEffect, useState, useCallback, useMemo } from 'react';
-import { Button, Card, Form, Container, Row, Col } from 'react-bootstrap';
+import React, { useEffect, useState, useCallback } from 'react';
+import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 import { postHistory } from './api/playersApi'
 import { Player } from './Player'
 import { PlayerForm } from './PlayerForm'
